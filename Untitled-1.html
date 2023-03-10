@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Estrazione numeri casuali</title>
+  </head>
+  <body>
+    <h1>Estrazione numeri casuali</h1>
+    <p>Di seguito sono riportati 20 numeri casuali estratti da un array di numeri da 1 a 50:</p>
+    <ul id="numeri-casuali"></ul>
+
+    <script>
+      const numeriCasuali = [];
+      while (numeriCasuali.length < 20) {
+        const numeroCasuale = Math.floor(Math.random() * 50) + 1;
+        if (!numeriCasuali.includes(numeroCasuale)) {
+          numeriCasuali.push(numeroCasuale);
+        }
+      }
+
+      const listaNumeriCasuali = document.getElementById("numeri-casuali");
+      for (let i = 0; i < numeriCasuali.length; i++) {
+        const li = document.createElement("li");
+        li.textContent = numeriCasuali[i];
+        listaNumeriCasuali.appendChild(li);
+      }
+    </script>
+  </body>
+</html>
