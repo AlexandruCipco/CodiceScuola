@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Selezione a cascata</h1>
+    <div>
+        Nazione:
+        <select id="nazioni" onchange="setColori(this.value)">
+            <option value="">-- Scegli la nazione --</option>
+        </select>
+    </div>
+    <div>
+        Colori:
+        <select id="colori"></select>
+    </div>
+</body>
+
+<script>
+
+    const elenco = {
+        "Italia": ["Verde","Bianco","Rosso"],
+        "Giappone": ["Bianco", "Rosso"]
+    }
+
+    let nazioni = document.getElementById("nazioni");
+    let colori = document.getElementById("colori");    
+
+    function getNazioni() {
+        for (var x in elenco) {
+            nazioni.options[nazioni.options.length] = new Option(x);
+        }
+    }
+    function cleanSelect() {
+        for(x in colori.options) {
+            colori.remove(x);
+        }
+    }
+    function setColori(nazione) {
+        cleanSelect();
+        for (var x in elenco) {
+            if(x == nazione) {
+                for(y in elenco[x] ) {
+                    console.log(y)
+                    colori.options[colori.options.length] = new Option(elenco[x][y]);
+                }               
+            }            
+        }
+    }
+    
+    getNazioni();
+
+</script>
+
+</html>
